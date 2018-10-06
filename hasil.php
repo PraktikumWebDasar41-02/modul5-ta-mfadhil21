@@ -1,0 +1,33 @@
+<?php
+	include('koneksi.php');
+	session_start();
+	$nama = $_SESSION['nama'];
+	$result = mysqli_query($db, "SELECT * FROM t_modul5 WHERE nama = '$nama'; ");
+	$row = mysqli_fetch_array($result);
+	$name = $row['nama'];
+	$nm = $row['nim'];
+	$imel = $row['email'];
+	$tgl = $row['tgl_lahir'];
+	$jns = $row['jns_kelamin'];
+	$prg = $row['prg_studi'];
+	$fakultas = $row['fakultas'];
+	$komen = $row['komentar'];
+	$htg_kata = str_word_count($komen);
+		echo "Nama: ";
+			printf ("%s",$row["nama"]);
+		echo "<br> NIM: ";
+			printf ("%s",$row["nim"]);
+		echo "<br> Email: ";
+			printf ("%s",$row["email"]);
+		echo "<br> Tanggal Lahir: ";
+			printf ("%s",$row["tgl_lahir"]);
+		echo "<br> Jenis Kelamin: ";
+			printf ("%s",$row["jns_kelamin"]);
+		echo "<br> Program Studi: ";
+			printf ("%s",$row["prg_studi"]);		
+		echo "<br> Fakultas: ";
+			printf ("%s",$row["fakultas"]);
+		echo "<br> Komentar: ";
+			printf ("%s",$row["komentar"]);
+		echo "<br> ada $htg_kata kata";
+?>
